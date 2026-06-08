@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Aurora | Montcada i Reixac</title>
+
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES DE COLOR (Paleta Crema/Beige) --- */
+        :root {
+            --bg-color: #FAF7F2;
+            /* Crema muy suave de fondo */
+            --card-bg: #FFFFFF;
+            /* Blanco para tarjetas */
+            --primary-beige: #D4C4A8;
+            /* Beige cálido para acentos */
+            --dark-beige: #B89F80;
+            /* Beige oscuro para hovers */
+            --text-color: #3E3228;
+            /* Marrón oscuro casi negro para texto (mejor lectura que el negro puro) */
+            --text-light: #6B5D52;
+            /* Marrón suave para textos secundarios */
+        }
+
+        /* ✅ AÑADIDO PARA SCROLL SUAVE: Activa la animación suave en toda la página */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- RESET Y ESTILOS GENERALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(62, 50, 40, 0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--dark-beige);
+        }
+
+        /* --- HERO SECTION (Portada) --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(62, 50, 40, 0.3), rgba(62, 50, 40, 0.4)),
+                url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-beige);
+            color: var(--text-color);
+            padding: 14px 35px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-beige);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 5rem 5%;
+            /* ✅ AÑADIDO PARA SCROLL SUAVE: Deja espacio arriba para que el header sticky no tape el título */
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- SERVICIOS Y PRECIOS --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(62, 50, 40, 0.04);
+            transition: transform 0.3s ease;
+            border-top: 3px solid var(--primary-beige);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark-beige);
+            font-weight: 600;
+        }
+
+        /* --- GALERÍA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            height: 350px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- RESERVAS (FORMULARIO) --- */
+        .booking-section {
+            background-color: #F0EBE3;
+            /* Un tono ligeramente más oscuro para diferenciar */
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(62, 50, 40, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--primary-beige);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dark-beige);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 3rem 5%;
+            /* ✅ AÑADIDO PARA SCROLL SUAVE: También compensa el header en el footer */
+            scroll-margin-top: 90px;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-beige);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #D4C4A8;
+            font-weight: 300;
+        }
+
+        footer a {
+            color: var(--primary-beige);
+            text-decoration: underline;
+        }
+
+        /* --- RESPONSIVE DESIGN (Móviles y Tablets) --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                /* Apilar campos del formulario en móvil */
+                gap: 0;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+
+            section,
+            footer {
+                scroll-margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <header>
+        <div class="logo">Aurora</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#reservas">Reservar Cita</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PORTADA (HERO) -->
+    <section id="inicio" class="hero">
+        <h1>Peluquería Aurora</h1>
+        <p>Tu belleza, nuestra pasión. Descubre un espacio de elegancia y cuidado personal en el corazón de Montcada i
+            Reixac.</p>
+        <a href="#reservas" class="btn">Reservar Cita</a>
+    </section>
+
+    <!-- SERVICIOS Y PRECIOS -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Ofrecemos tratamientos personalizados con los mejores productos del mercado para
+            realzar tu belleza natural.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Corte y Peinado</h3>
+                <p>Asesoramiento personalizado, lavado relajante, corte a medida y secado con acabado profesional.</p>
+                <div class="price">Desde 25€</div>
+            </div>
+            <div class="service-card">
+                <h3>Coloración Completa</h3>
+                <p>Tinte de raíz o largo total con productos sin amoniaco que cuidan la salud de tu cabello.</p>
+                <div class="price">Desde 45€</div>
+            </div>
+            <div class="service-card">
+                <h3>Mechas y Balayage</h3>
+                <p>Técnicas de iluminación personalizadas para dar luminosidad y dimensión a tu melena.</p>
+                <div class="price">Desde 60€</div>
+            </div>
+            <div class="service-card">
+                <h3>Tratamientos Capilares</h3>
+                <p>Hidratación profunda, keratina o botox capilar para recuperar el brillo y la fuerza.</p>
+                <div class="price">Desde 35€</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA DE IMÁGENES -->
+    <section id="galeria" style="background-color: #F0EBE3;">
+        <h2 class="section-title">Nuestro Espacio</h2>
+        <p class="section-subtitle">Un ambiente acogedor, elegante y diseñado para que te sientas como en casa.</p>
+
+        <div class="gallery-grid">
+            <!-- Imágenes de stock de Unsplash (puedes cambiar las URL por tus propias fotos más adelante) -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
+                    alt="Interior peluquería elegante">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80"
+                    alt="Detalle de peinado">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80"
+                    alt="Productos de peluquería">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=600&q=80"
+                    alt="Estilista trabajando">
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVA DE CITAS -->
+    <section id="reservas" class="booking-section">
+        <h2 class="section-title">Reserva tu Cita</h2>
+        <p class="section-subtitle">Rellena el formulario y nos pondremos en contacto contigo para confirmar tu hora, o
+            si lo prefieres, contactanos por Whatsapp en el contacto facilitado abajo.
+        </p>
+
+        <!-- NOTA: Para que este formulario funcione y te envíe emails, puedes usar un servicio gratuito como Formspree.io. Solo tendrías que cambiar el "action" del formulario. -->
+        <form class="booking-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="servicio">Servicio deseado</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="" disabled selected>Selecciona un servicio</option>
+                        <option value="corte">Corte y Peinado</option>
+                        <option value="color">Coloración Completa</option>
+                        <option value="mechas">Mechas / Balayage</option>
+                        <option value="tratamiento">Tratamiento Capilar</option>
+                        <option value="otro">Otro (especificar en mensaje)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha preferida</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Comentarios adicionales (opcional)</label>
+                <textarea id="mensaje" name="mensaje" rows="4"
+                    placeholder="¿Alguna alergia, preferencia de horario o duda?"></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Solicitar Cita</button>
+        </form>
+    </section>
+
+    <!-- FOOTER / CONTACTO -->
+    <footer id="contacto">
+        <h3>Peluquería Aurora</h3>
+        <p>📍 Carrer de l'Exemple, 12, 08110 Montcada i Reixac, Barcelona</p>
+        <p>📞 <a href="tel:+34931234567">93 123 45 67</a></p>
+        <p>✉️ <a href="mailto:hola@peluqueriaaurora.com">hola@peluqueriaaurora.com</a></p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">© 2024 Peluquería Aurora. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

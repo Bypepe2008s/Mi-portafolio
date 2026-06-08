@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Aurora | Montcada i Reixac</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #1A1412;
+            --card-bg: #241B18;
+            --cream: #F5EBD9;
+            --burgundy: #8B2635;
+            --gold: #D4A84B;
+            --dark-gold: #B8912F;
+            --text-color: #F5EBD9;
+            --text-light: #B8A896;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(26, 20, 18, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.2);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cream);
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(26, 20, 18, 0.6), rgba(26, 20, 18, 0.7)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--cream);
+            padding: 0 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--gold);
+            padding: 14px 40px;
+            border: 2px solid var(--gold);
+            border-radius: 0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn:hover {
+            background-color: var(--gold);
+            color: var(--bg-color);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 6rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 1rem auto 2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* SOBRE NOSOTROS */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about img {
+            border-radius: 4px;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        /* CARTA / MENÚ */
+        .menu-section {
+            background-color: var(--card-bg);
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-category-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 3rem 0 2rem;
+            font-style: italic;
+        }
+
+        .menu-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(212, 168, 75, 0.3);
+        }
+
+        .menu-item-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .menu-item-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
+
+        /* GALERÍA */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        /* RESERVAS */
+        .booking-section {
+            background-color: var(--card-bg);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            padding: 3rem;
+            border: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(212, 168, 75, 0.3);
+            background-color: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group select option {
+            background-color: var(--bg-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0F0A09;
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(212, 168, 75, 0.2);
+            scroll-margin-top: 90px;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        footer a {
+            color: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about img {
+                height: 300px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            section,
+            footer {
+                scroll-margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Aurora</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#carta">Carta</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-subtitle">Cocina de autor</div>
+        <h1>Aurora</h1>
+        <p>"Donde cada plato cuenta una historia y cada cena se convierte en un recuerdo"</p>
+        <a href="#reservas" class="btn">Reservar Mesa</a>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros">
+        <div class="about">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80"
+                alt="Plato gourmet">
+            <div class="about-text">
+                <h2>Nuestra Historia</h2>
+                <p>Desde 2010, Aurora se ha convertido en un referente gastronómico en Montcada i Reixac. Nuestro chef,
+                    con más de 20 años de experiencia, fusiona la tradición mediterránea con técnicas contemporáneas.
+                </p>
+                <p>Trabajamos exclusivamente con producto de proximidad, de temporada y de la máxima calidad. Cada plato
+                    es una celebración de los sabores auténticos de nuestra tierra.</p>
+                <p>Te invitamos a descubrir una experiencia culinaria única en un ambiente cálido y elegante.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARTA -->
+    <section id="carta" class="menu-section">
+        <h2 class="section-title">Nuestra Carta</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Una selección de nuestros platos más emblemáticos</p>
+
+        <h3 class="menu-category-title">Entrantes</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Carpaccio de ternera</h4>
+                    <p>Rúcula, parmesano, alcaparras y aceite de trufa</p>
+                </div>
+                <div class="menu-item-price">14€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Croquetas de jamón ibérico</h4>
+                    <p>Bechamel cremosa con jamón ibérico de bellota</p>
+                </div>
+                <div class="menu-item-price">10€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Tataki de atún rojo</h4>
+                    <p>Sésamo, ponzu casero y wakame</p>
+                </div>
+                <div class="menu-item-price">16€</div>
+            </div>
+        </div>
+
+        <h3 class="menu-category-title">Principales</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Risotto de boletus</h4>
+                    <p>Arroz carnaroli, boletus edulis y parmesano 24 meses</p>
+                </div>
+                <div class="menu-item-price">18€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Lubina a la sal</h4>
+                    <p>Con verduras de temporada y salsa de champagne</p>
+                </div>
+                <div class="menu-item-price">24€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Solomillo de ternera</h4>
+                    <p>Punto a elegir, reducción de Pedro Ximénez y patata trufada</p>
+                </div>
+                <div class="menu-item-price">28€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Cochinillo confitado</h4>
+                    <p>Piel crujiente, puré de manzana y jus de romero</p>
+                </div>
+                <div class="menu-item-price">26€</div>
+            </div>
+        </div>
+
+        <h3 class="menu-category-title">Postres</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Tarta de queso de La Viña</h4>
+                    <p>Nuestra versión con coulis de frutos rojos</p>
+                </div>
+                <div class="menu-item-price">8€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Coulant de chocolate 70%</h4>
+                    <p>Corazón fundente y helado de vainilla de Madagascar</p>
+                </div>
+                <div class="menu-item-price">9€</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Crema catalana tradicional</h4>
+                    <p>Con costra de azúcar caramelizado</p>
+                </div>
+                <div class="menu-item-price">7€</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria">
+        <h2 class="section-title">Nuestro Rincón</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Un espacio cuidado al detalle para una velada inolvidable</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"
+                    alt="Interior restaurante">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80"
+                    alt="Plato gourmet">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=80"
+                    alt="Mesa preparada">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+                    alt="Postre">
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="reservas" class="booking-section">
+        <h2 class="section-title">Reserva tu Mesa</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Te esperamos para ofrecerte una experiencia única</p>
+
+        <form class="booking-form" action="https://formspree.io/f/TU_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="hora">Hora</label>
+                    <select id="hora" name="hora" required>
+                        <option value="" disabled selected>Selecciona</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="20:30">20:30</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:30">21:30</option>
+                        <option value="22:00">22:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comensales">Número de comensales</label>
+                <select id="comensales" name="comensales" required>
+                    <option value="" disabled selected>Selecciona</option>
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                    <option value="6">6 personas</option>
+                    <option value="7+">Más de 6 (grupos)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="notas">Notas especiales</label>
+                <textarea id="notas" name="notas" rows="3"
+                    placeholder="Alergias, celebraciones, preferencias..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Reservar</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <h3>Aurora</h3>
+        <p>📍 Carrer de la Cuina, 8, 08110 Montcada i Reixac</p>
+        <p>📞 <a href="tel:+34931234567">93 123 45 67</a></p>
+        <p>✉️ <a href="mailto:reservas@aurorarestaurante.com">reservas@aurorarestaurante.com</a></p>
+        <p>🕐 Mar-Dom: 13:00 - 16:00 / 20:00 - 23:30 · Lunes cerrado</p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">© 2024 Restaurante Aurora. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

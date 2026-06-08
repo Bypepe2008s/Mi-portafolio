@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinaria Aurora | Montcada i Reixac</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F4F9F7;
+            --card-bg: #FFFFFF;
+            --primary-blue: #4A90A4;
+            --primary-green: #7BC4A4;
+            --dark-blue: #2C5F6F;
+            --accent-yellow: #F7D060;
+            --text-color: #2D3E44;
+            --text-light: #6B8288;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(244, 249, 247, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(44, 95, 111, 0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🐾";
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* HERO */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(44, 95, 111, 0.5), rgba(123, 196, 164, 0.4)),
+                url('https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 650px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-yellow);
+            color: var(--text-color);
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #f5c542;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(247, 208, 96, 0.4);
+        }
+
+        /* URGENCIA BANNER */
+        .urgency-banner {
+            background-color: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-weight: 600;
+        }
+
+        .urgency-banner a {
+            color: var(--accent-yellow);
+            text-decoration: underline;
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 5rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* SERVICIOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(44, 95, 111, 0.06);
+            transition: transform 0.3s ease;
+            border-bottom: 4px solid var(--primary-green);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* EQUIPO */
+        .team-section {
+            background-color: #EAF3EF;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(44, 95, 111, 0.06);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* FORMULARIO */
+        .booking-section {
+            background-color: #EAF3EF;
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(44, 95, 111, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #D4E5E0;
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 3rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-yellow);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #B8D4D0;
+            font-weight: 300;
+        }
+
+        footer a {
+            color: var(--accent-yellow);
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            section,
+            footer {
+                scroll-margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BANNER URGENCIAS -->
+    <div class="urgency-banner">
+        🚨 ¿Urgencia veterinaria? Llámanos 24h: <a href="tel:+34931234567">93 123 45 67</a>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Clínica Aurora</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#cita">Pedir Cita</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <h1>Cuidamos a quien más quieres</h1>
+        <p>Atención veterinaria de calidad con el cariño que tu mascota merece. Más de 15 años cuidando a los animales
+            de Montcada i Reixac.</p>
+        <a href="#cita" class="btn">Pedir Cita</a>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Ofrecemos atención integral para perros, gatos, exóticos y aves con la tecnología
+            más avanzada.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🩺</div>
+                <h3>Consulta General</h3>
+                <p>Revisiones, vacunaciones, desparasitación y chequeos preventivos para mantener a tu mascota sana.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Diagnóstico por Imagen</h3>
+                <p>Radiografía digital y ecografía para diagnósticos precisos y rápidos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💉</div>
+                <h3>Cirugía</h3>
+                <p>Quirófano equipado para cirugías de tejidos blandos, esterilizaciones y traumatología.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🦷</div>
+                <h3>Odontología</h3>
+                <p>Limpieza dental con ultrasonidos, extracciones y cuidado bucal completo.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🐾</div>
+                <h3>Peluquería Canina</h3>
+                <p>Baño, corte y arreglo estético para que tu mascota esté guapa y saludable.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>Hospitalización</h3>
+                <p>Cuidados intensivos 24h con monitorización constante y atención personalizada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="team-section">
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <p class="section-subtitle">Profesionales apasionados por los animales, con formación continua y mucho cariño.
+        </p>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80"
+                    alt="Dra. Laura Martínez">
+                <div class="team-info">
+                    <h3>Dra. Laura Martínez</h3>
+                    <p>Directora · Medicina interna</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80"
+                    alt="Dr. Carlos Ruiz">
+                <div class="team-info">
+                    <h3>Dr. Carlos Ruiz</h3>
+                    <p>Cirugía y traumatología</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=80"
+                    alt="Ana García">
+                <div class="team-info">
+                    <h3>Ana García</h3>
+                    <p>ATV · Peluquería canina</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO CITA -->
+    <section id="cita" class="booking-section">
+        <h2 class="section-title">Pide tu Cita</h2>
+        <p class="section-subtitle">Cuéntanos qué le pasa a tu mascota y te daremos hora lo antes posible.</p>
+
+        <form class="booking-form" action="https://formspree.io/f/TU_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Tu nombre</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mascota">Nombre de tu mascota</label>
+                    <input type="text" id="mascota" name="mascota" required placeholder="Ej: Luna">
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de animal</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="" disabled selected>Selecciona</option>
+                        <option value="perro">Perro</option>
+                        <option value="gato">Gato</option>
+                        <option value="exotico">Exótico / Ave</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="motivo">Motivo de la consulta</label>
+                <textarea id="motivo" name="motivo" rows="4" placeholder="Cuéntanos brevemente el motivo..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Solicitar Cita</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <h3>Clínica Veterinaria Aurora</h3>
+        <p>📍 Carrer Major, 45, 08110 Montcada i Reixac, Barcelona</p>
+        <p>📞 <a href="tel:+34931234567">93 123 45 67</a> · 🚨 Urgencias 24h</p>
+        <p>✉️ <a href="mailto:hola@vetaurora.com">hola@vetaurora.com</a></p>
+        <p>🕐 L-V: 9:30 - 20:00 · S: 10:00 - 14:00</p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">© 2024 Clínica Veterinaria Aurora. Todos los derechos reservados.
+        </p>
+    </footer>
+
+</body>
+
+</html>

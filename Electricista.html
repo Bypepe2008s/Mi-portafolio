@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricista Aurora | Montcada i Reixac</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --dark-blue: #0A2540;
+            --electric-blue: #0066FF;
+            --yellow: #FFD60A;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+            --text-color: #0A2540;
+            --text-light: #6B7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(10, 37, 64, 0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "⚡";
+            color: var(--yellow);
+            background-color: var(--dark-blue);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        nav a:hover {
+            color: var(--electric-blue);
+        }
+
+        .header-phone {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .header-phone:hover {
+            background-color: #FFC800;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #1a3a5c 100%);
+            color: #FFFFFF;
+            padding: 6rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 214, 10, 0.2);
+            color: var(--yellow);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 214, 10, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #FFC800;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #FFFFFF;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-stats {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-stats strong {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-stats span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* URGENCIA */
+        .urgency-banner {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            text-align: center;
+            padding: 1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 5rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        .section-tag {
+            color: var(--electric-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* SERVICIOS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(10, 37, 64, 0.06);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.12);
+            border-color: var(--electric-blue);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--electric-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* POR QUÉ ELEGIRNOS */
+        .why-section {
+            background-color: var(--dark-blue);
+            color: #FFFFFF;
+        }
+
+        .why-section .section-title {
+            color: #FFFFFF;
+        }
+
+        .why-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* FORMULARIO */
+        .booking-section {
+            background-color: var(--bg-color);
+        }
+
+        .booking-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(10, 37, 64, 0.08);
+            border-top: 4px solid var(--electric-blue);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .urgency-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 214, 10, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--yellow);
+        }
+
+        .urgency-check input {
+            width: auto;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark-blue);
+            color: #FFFFFF;
+            padding: 3rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--yellow);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                order: 3;
+                width: 100%;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 4rem 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            section,
+            footer {
+                scroll-margin-top: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Aurora</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#presupuesto">Presupuesto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="tel:+34600123456" class="header-phone">📞 600 123 456</a>
+    </header>
+
+    <!-- BANNER URGENCIAS -->
+    <div class="urgency-banner">
+        ⚡ Servicio de urgencias 24h · Respondemos en menos de 45 minutos en Montcada i Reixac
+    </div>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">⚡ Electricistas autorizados</div>
+            <h1>Soluciones eléctricas <span>de confianza</span></h1>
+            <p>Instalaciones, reparaciones y boletines eléctricos con más de 20 años de experiencia. Presupuesto sin
+                compromiso y garantía en todos nuestros trabajos.</p>
+            <div class="hero-buttons">
+                <a href="#presupuesto" class="btn btn-primary">Pedir Presupuesto</a>
+                <a href="tel:+34600123456" class="btn btn-secondary">📞 Llamar Ahora</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80"
+                alt="Electricista profesional">
+            <div class="hero-stats">
+                <strong>20+</strong>
+                <span>Años de experiencia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="section-tag">Qué hacemos</div>
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Ofrecemos soluciones eléctricas integrales para hogares, comercios e industrias.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Instalaciones Domésticas</h3>
+                <p>Nuevas instalaciones, reformas completas y ampliaciones de cuadros eléctricos en viviendas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Averías y Reparaciones</h3>
+                <p>Diagnóstico y reparación de cortocircuitos, apagones, fallos de diferencial y más.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Boletines Eléctricos</h3>
+                <p>Certificados de instalación eléctrica (CIE) para altas de luz, ventas de pisos y locales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Iluminación LED</h3>
+                <p>Diseño e instalación de sistemas de iluminación eficiente para ahorrar en tu factura.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Locales y Comercios</h3>
+                <p>Instalaciones eléctricas completas para negocios, cumpliendo toda la normativa vigente.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔌</div>
+                <h3>Domótica</h3>
+                <p>Automatización del hogar: persianas, luces, climatización controladas desde el móvil.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Cargadores de Vehículo Eléctrico</h3>
+                <p>Instalación de puntos de recarga para coches eléctricos en garajes comunitarios y viviendas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚨</div>
+                <h3>Urgencias 24h</h3>
+                <p>Servicio de urgencias disponible las 24 horas, los 365 días del año. Tiempo de respuesta mínimo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section id="nosotros" class="why-section">
+        <div class="section-tag" style="color: var(--yellow);">Por qué Aurora</div>
+        <h2 class="section-title">Números que hablan por nosotros</h2>
+        <p class="section-subtitle">La confianza de nuestros clientes es nuestro mayor aval.</p>
+
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-number">20+</div>
+                <h3>Años de experiencia</h3>
+                <p>Dos décadas trabajando en Montcada i Reixac y alrededores.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">3.500+</div>
+                <h3>Trabajos realizados</h3>
+                <p>Clientes satisfechos en hogares, comercios e industrias.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">45'</div>
+                <h3>Tiempo de respuesta</h3>
+                <p>En urgencias, llegamos en menos de 45 minutos.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-number">100%</div>
+                <h3>Garantía</h3>
+                <p>Todos nuestros trabajos con garantía por escrito.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section id="presupuesto" class="booking-section">
+        <div class="section-tag">Sin compromiso</div>
+        <h2 class="section-title">Pide tu Presupuesto Gratis</h2>
+        <p class="section-subtitle">Cuéntanos qué necesitas y te contactamos en menos de 2 horas con un presupuesto
+            orientativo.</p>
+
+        <form class="booking-form" action="https://formspree.io/f/TU_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="servicio">Tipo de servicio</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="" disabled selected>Selecciona un servicio</option>
+                    <option value="averia">Avería / Reparación</option>
+                    <option value="instalacion">Nueva instalación</option>
+                    <option value="boletin">Boletín eléctrico</option>
+                    <option value="iluminacion">Iluminación LED</option>
+                    <option value="domotica">Domótica</option>
+                    <option value="cargador">Cargador vehículo eléctrico</option>
+                    <option value="urgencia">⚡ Urgencia</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="urgency-check">
+                <input type="checkbox" id="urgente" name="urgente">
+                <label for="urgente" style="margin: 0; cursor: pointer;">Es una urgencia (necesito respuesta
+                    inmediata)</label>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección del trabajo</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Calle, número, piso...">
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Describe el trabajo</label>
+                <textarea id="descripcion" name="descripcion" rows="4"
+                    placeholder="Cuéntanos qué necesitas con el máximo detalle..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; background-color: var(--electric-blue); color: white;">Solicitar
+                Presupuesto</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Electricista Aurora</h3>
+                <p>Instaladores autorizados por la Generalitat de Catalunya. Nº registro: XXXXX</p>
+                <p>Más de 20 años dando luz a Montcada i Reixac.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>📍 Carrer de la Llum, 15, 08110 Montcada i Reixac</p>
+                <p>📞 <a href="tel:+34600123456">600 123 456</a></p>
+                <p>✉️ <a href="mailto:info@electricistaaurora.com">info@electricistaaurora.com</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Horario</h3>
+                <p>L-V: 8:00 - 20:00</p>
+                <p>S: 9:00 - 14:00</p>
+                <p style="color: var(--yellow); font-weight: 600;">⚡ Urgencias 24h · 365 días</p>
+            </div>
+            <div class="footer-col">
+                <h3>Zonas de trabajo</h3>
+                <p>Montcada i Reixac</p>
+                <p>Mollet del Vallès</p>
+                <p>Santa Coloma</p>
+                <p>Ripollet · Barberà</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Electricista Aurora. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

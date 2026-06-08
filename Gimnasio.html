@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio Aurora | Montcada i Reixac</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0F0F0F;
+            --card-bg: #1A1A1A;
+            --orange: #FF6B1A;
+            --orange-dark: #E55500;
+            --light-gray: #E8E8E8;
+            --medium-gray: #888;
+            --text-color: #FFFFFF;
+            --text-light: #B0B0B0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--orange);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        /* HERO */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(15, 15, 15, 0.6), rgba(15, 15, 15, 0.8)),
+                url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            color: #FFFFFF;
+        }
+
+        .hero-tag {
+            color: var(--orange);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--orange);
+            color: #FFFFFF;
+            padding: 16px 40px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+        }
+
+        .btn:hover {
+            background-color: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--orange);
+            color: #FFFFFF;
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 5rem 5%;
+            scroll-margin-top: 90px;
+        }
+
+        .section-tag {
+            color: var(--orange);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ACTIVIDADES */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .activity-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-left: 4px solid var(--orange);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--orange);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+
+        .activity-card:hover::before {
+            width: 100%;
+        }
+
+        .activity-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card:hover p {
+            color: #FFFFFF;
+        }
+
+        .activity-time {
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .activity-card:hover .activity-time {
+            color: #FFFFFF;
+        }
+
+        /* INSTALACIONES */
+        .facilities-section {
+            background-color: var(--card-bg);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .facility-item {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .facility-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .facility-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .facility-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 2rem;
+        }
+
+        .facility-overlay h3 {
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        /* PRECIOS / CUOTAS */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--orange);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: "MÁS POPULAR";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--orange);
+            color: white;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+
+        .price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            border-bottom: 1px solid #2A2A2A;
+        }
+
+        .pricing-features li::before {
+            content: "✓ ";
+            color: var(--orange);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* FORMULARIO */
+        .booking-section {
+            background-color: var(--card-bg);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            padding: 3rem;
+            border-top: 4px solid var(--orange);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--orange);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #333;
+            background-color: var(--card-bg);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #050505;
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 3px solid var(--orange);
+            scroll-margin-top: 90px;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        footer h3 span {
+            color: var(--orange);
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--orange);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                align-items: center;
+                text-align: center;
+                padding: 0 5%;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            section,
+            footer {
+                scroll-margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">AUR<span>ORA</span></div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#instalaciones">Instalaciones</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#unete">Únete</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <div class="hero-tag">Gimnasio en Montcada i Reixac</div>
+        <h1>Supera tus <span>límites</span></h1>
+        <p>Entrena con los mejores equipos, los mejores profesionales y la mejor energía. Tu transformación empieza
+            aquí.</p>
+        <div>
+            <a href="#unete" class="btn">Prueba Gratis</a>
+            <a href="#precios" class="btn btn-outline">Ver Precios</a>
+        </div>
+    </section>
+
+    <!-- ACTIVIDADES -->
+    <section id="actividades">
+        <div class="section-tag">Clases dirigidas</div>
+        <h2 class="section-title">Nuestras Actividades</h2>
+        <p class="section-subtitle">Más de 30 clases semanales para todos los niveles. Elige la tuya.</p>
+
+        <div class="activities-grid">
+            <div class="activity-card">
+                <h3>CrossTraining</h3>
+                <p>Entrenamiento funcional de alta intensidad. Combina fuerza, cardio y agilidad en cada sesión.</p>
+                <div class="activity-time">L-M-X-V · 18:00 / 19:30</div>
+            </div>
+            <div class="activity-card">
+                <h3>Spinning</h3>
+                <p>Quema calorías al ritmo de la música. La clase más divertida y exigente del gimnasio.</p>
+                <div class="activity-time">M-J-S · 10:00 / 19:00</div>
+            </div>
+            <div class="activity-card">
+                <h3>Yoga</h3>
+                <p>Conecta cuerpo y mente. Mejora tu flexibilidad, equilibrio y reduce el estrés.</p>
+                <div class="activity-time">L-X-V · 9:00 / 20:00</div>
+            </div>
+            <div class="activity-card">
+                <h3>Boxeo</h3>
+                <p>Aprende técnica de boxeo mientras tonificas todo tu cuerpo y liberas tensión.</p>
+                <div class="activity-time">M-J · 19:00 / 20:30</div>
+            </div>
+            <div class="activity-card">
+                <h3>Pilates</h3>
+                <p>Fortalece tu core, mejora tu postura y gana consciencia corporal.</p>
+                <div class="activity-time">L-X-V · 11:00 / 18:00</div>
+            </div>
+            <div class="activity-card">
+                <h3>HIIT</h3>
+                <p>Intervalos de alta intensidad. Máximos resultados en mínimo tiempo.</p>
+                <div class="activity-time">M-X-J · 7:30 / 20:30</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTALACIONES -->
+    <section id="instalaciones" class="facilities-section">
+        <div class="section-tag">2.000 m² de instalaciones</div>
+        <h2 class="section-title">Nuestro Espacio</h2>
+        <p class="section-subtitle">Equipamiento de última generación en un espacio diseñado para rendir al máximo.</p>
+
+        <div class="facilities-grid">
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+                    alt="Sala de musculación">
+                <div class="facility-overlay">
+                    <h3>Musculación</h3>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80"
+                    alt="Sala de cardio">
+                <div class="facility-overlay">
+                    <h3>Cardio</h3>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=80"
+                    alt="Sala de clases">
+                <div class="facility-overlay">
+                    <h3>Salas de Clases</h3>
+                </div>
+            </div>
+            <div class="facility-item">
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+                    alt="Zona funcional">
+                <div class="facility-overlay">
+                    <h3>Zona Funcional</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section id="precios">
+        <div class="section-tag">Planes y cuotas</div>
+        <h2 class="section-title">Elige tu Plan</h2>
+        <p class="section-subtitle">Sin permanencia. Sin matrícula el primer mes. Cancela cuando quieras.</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Básico</h3>
+                <div class="price">29€<span>/mes</span></div>
+                <ul class="pricing-features">
+                    <li>Acceso a sala de musculación</li>
+                    <li>Acceso a zona de cardio</li>
+                    <li>Vestuarios y duchas</li>
+                    <li>Horario de 6:00 a 22:00</li>
+                </ul>
+                <a href="#unete" class="btn" style="width: 100%;">Empezar</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Completo</h3>
+                <div class="price">45€<span>/mes</span></div>
+                <ul class="pricing-features">
+                    <li>Todo lo del plan Básico</li>
+                    <li>Clases dirigidas ilimitadas</li>
+                    <li>Acceso 24/7</li>
+                    <li>App con rutinas personalizadas</li>
+                    <li>1 sesión con entrenador/mes</li>
+                </ul>
+                <a href="#unete" class="btn" style="width: 100%;">Empezar</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Premium</h3>
+                <div class="price">69€<span>/mes</span></div>
+                <ul class="pricing-features">
+                    <li>Todo lo del plan Completo</li>
+                    <li>4 sesiones con entrenador/mes</li>
+                    <li>Plan nutricional personalizado</li>
+                    <li>Acceso a zona wellness (sauna)</li>
+                    <li>Toallas y amenities incluidos</li>
+                </ul>
+                <a href="#unete" class="btn" style="width: 100%;">Empezar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section id="unete" class="booking-section">
+        <div class="section-tag">Prueba gratis 3 días</div>
+        <h2 class="section-title">Empieza Hoy</h2>
+        <p class="section-subtitle">Déjanos tus datos y te contactamos para agendar tu visita y prueba gratuita.</p>
+
+        <form class="booking-form" action="https://formspree.io/f/TU_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="600 000 000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="interes">¿Qué te interesa?</label>
+                <select id="interes" name="interes" required>
+                    <option value="" disabled selected>Selecciona</option>
+                    <option value="prueba">Prueba gratuita</option>
+                    <option value="basico">Plan Básico</option>
+                    <option value="completo">Plan Completo</option>
+                    <option value="premium">Plan Premium</option>
+                    <option value="info">Solo quiero información</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje (opcional)</label>
+                <textarea id="mensaje" name="mensaje" rows="3" placeholder="¿Alguna pregunta o preferencia?"></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Quiero Empezar</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <h3>AUR<span>ORA</span> FITNESS</h3>
+        <p>📍 Avinguda de l'Esport, 22, 08110 Montcada i Reixac</p>
+        <p>📞 <a href="tel:+34931234567">93 123 45 67</a></p>
+        <p>✉️ <a href="mailto:info@auroragym.com">info@auroragym.com</a></p>
+        <p>🕐 L-V: 6:00 - 23:00 · S-D: 8:00 - 21:00</p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">© 2024 Gimnasio Aurora. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

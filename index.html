@@ -16,6 +16,8 @@
             --card-bg: #FFFFFF;
             --primary: #2563EB;
             --primary-hover: #1D4ED8;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #1EBE57;
             --text-main: #0F172A;
             --text-muted: #64748B;
             --border: #E2E8F0;
@@ -107,6 +109,15 @@
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
         }
 
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-hover);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
         .btn-outline {
             background-color: transparent;
             color: var(--text-main);
@@ -121,7 +132,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- SECCIÓN SOBRE MÍ (NUEVA) --- */
+        /* --- SOBRE MÍ --- */
         .about-section {
             padding: 4rem 1.5rem;
             max-width: 900px;
@@ -272,7 +283,7 @@
             border-color: var(--primary);
         }
 
-        /* --- SECCIÓN CÓMO TRABAJO (NUEVA) --- */
+        /* --- CÓMO TRABAJO --- */
         .process-section {
             padding: 5rem 1.5rem;
             background-color: var(--card-bg);
@@ -295,7 +306,6 @@
         .process-step {
             text-align: center;
             padding: 2rem 1.5rem;
-            position: relative;
         }
 
         .process-number {
@@ -325,7 +335,7 @@
             line-height: 1.6;
         }
 
-        /* --- CTA FINAL (NUEVA) --- */
+        /* --- CTA FINAL --- */
         .cta-section {
             padding: 5rem 1.5rem;
             text-align: center;
@@ -421,7 +431,7 @@
         </div>
     </header>
 
-    <!-- SOBRE MÍ (NUEVO) -->
+    <!-- SOBRE MÍ -->
     <section class="about-section">
         <div class="about-card">
             <div class="about-avatar">P</div>
@@ -454,7 +464,7 @@
             <article class="project-card">
                 <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Web de Restaurante" class="project-image">
                 <div class="project-content">
-                    <h3 class="project-title">🍽️ Restaurante Aurora</h3>
+                    <h3 class="project-title">️ Restaurante Aurora</h3>
                     <p class="project-desc">Estilo elegante y sofisticado, con carta digital interactiva y sistema de reserva de mesas.</p>
                     <a href="Restaurante.html" class="btn-demo" target="_blank">Ver demo en vivo →</a>
                 </div>
@@ -490,7 +500,7 @@
         </div>
     </main>
 
-    <!-- CÓMO TRABAJO (NUEVO) -->
+    <!-- CÓMO TRABAJO -->
     <section class="process-section">
         <div class="process-wrapper">
             <div class="section-header">
@@ -518,11 +528,11 @@
         </div>
     </section>
 
-    <!-- CTA FINAL (NUEVO) -->
+    <!-- CTA FINAL (WHATSAPP) -->
     <section class="cta-section" id="cta">
         <h2>¿Listo para <span>modernizar</span> tu negocio?</h2>
         <p>Si tu negocio aún no tiene web o la que tienes ya no te representa, hablemos. Te preparo un presupuesto sin compromiso en menos de 24 horas.</p>
-        <a href="mailto:a20jdelabarrera@gmail.com" class="btn btn-large">✉️ Escríbeme un email</a>
+        <a href="https://wa.me/34655535416?text=Hola%20Pepe,%20me%20gustar%C3%ADa%20recibir%20un%20presupuesto%20para%20mi%20web" class="btn btn-whatsapp btn-large" target="_blank">💬 Escríbeme por WhatsApp</a>
     </section>
 
     <!-- FOOTER -->
